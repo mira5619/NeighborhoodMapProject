@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Portsmouth</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <nav class="navbar navbar-default">
+            <h3 class="text-center heading"><strong>Places to visit in Portsmouth!</strong></h3>
+            <!-- start collapsed navbar-->
+            <div class="navbar-header">
+              <button id="btn"
+                type="button" class="navbar-toggle collapsed btn" data-toggle="collapse" data-target="#main_navbar" aria-expanded="false"><strong>List of places</strong>
+              </button>
+            </div><!-- / collapsed navbar-->
+            <!-- start un-collapsed navbar-->
+            <div class="collapse navbar-collapse" id="main_navbar">
+              <!-- search box binding-->
+              <div>
+                <input id="searchbox" type = "text" name = "search" placeholder = "search" data-bind = "value: searchStr, valueUpdate: 'keyup'" autocomplete = "off"/>
+              </div>
+              <!-- list bindings-->
+              <div>
+                <ul id="my-list" class="nav navbar-nav list-unstyled" data-bind="foreach: search()">
+                  <li class="loc" data-bind="text: name, click: $parent.setLoc"></li>
+                </ul>
+              </div>
+            </div><!-- / un-collapsed navbar-->
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- map container-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeiU89rbCPKlLaDaA8nCKKK7q1OZl7zM0&callback=initMap" onerror="googleError()"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.heading {
+    padding-top: 20px;
+}
+
+#btn {
+    font-size:1.2em;
+}
+
+#descr {
+    font-size:1.1em;
+}
+
+#map {
+    height: 100vh;
+    max-width: 100%;
+}
+
+#searchbox {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#my-list {
+    background: #DDD;
+    padding: 3px;
+    border:2px solid #DDD;
+    border-radius: 10px;
+}
+
+.loc {
+    background: white;
+    margin: 5px;
+    padding-left:7px;
+    padding-right: 7px;
+    font-size: 1.1em
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #F57F05;
+}
