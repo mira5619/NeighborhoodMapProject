@@ -56,6 +56,10 @@ function initMap() {
       //building url for our request
       var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' +
        mylist[i].name + '&' + mylist[i].address + '&format=json&callback=wikiCallback';
+      //after me review added setTimeout function for error handling with JSON P
+      var wikiRequestTimeout = setTimeout(function(){
+        contentString = '<p>"Failed to get wikipedia resources."<p>';
+      }, 5000);
 
       $.ajax({
       url: wikiUrl,
@@ -73,7 +77,8 @@ function initMap() {
         infowindow.setContent(contentString);
         infowindow.open(map,clickedMarker);
         toggleBounce();
-         //clearTimeout(wikiRequestTimeout);
+        //added after my review
+        clearTimeout(wikiRequestTimeout);
       },
       error: function() {
         var contentString = '<p>"Failed to get wikipedia resources. Please try again later "<p>';
