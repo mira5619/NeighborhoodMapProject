@@ -61,7 +61,7 @@ function initMap() {
         contentString = '<p>"Failed to get wikipedia resources."<p>';
       }, 5000);
 
-      //replased seccess method with done as the first is deprecated.
+      //replased success method with done as the first is deprecated.
       //remove error method as it is not build in jsonp, instead I put setTimeout.
 
       $.ajax({
