@@ -61,33 +61,30 @@ function initMap() {
         contentString = '<p>"Failed to get wikipedia resources."<p>';
       }, 5000);
 
-      $.ajax({
-      url: wikiUrl,
-      dataType: "jsonp",
-      jsonp: "callback",
-      success: function( response ) {
-        var name = response[1];
-        //var name = response[0];
-        var descrStr = response[2];
-        //var urlStr = response[3];
-        var url = 'http://en.wikipedia.org/wiki/' + name;
-        var contentString = '<div><h4>' + name + '</h4>' + '<p id = "descr">' + descrStr +
-         '</p><p><b>Learn more about</b>: <a href="' + url + '">' + name + '</a></p></div>';
+      //replased seccess method with done as the first is deprecated.
+      //remove error method as it is not build in jsonp, instead I put setTimeout.
 
-        infowindow.setContent(contentString);
-        infowindow.open(map,clickedMarker);
-        toggleBounce();
-        //added after my review
-        clearTimeout(wikiRequestTimeout);
-      },
-      error: function() {
-        var contentString = '<p>"Failed to get wikipedia resources. Please try again later "<p>';
-        infowindow.setContent(contentString);
-        infowindow.open(map,clickedMarker);
-        toggleBounce();
-      }
-      });
+      $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+        jsonp: "callback"
+      }).done(function( response ) {
+          var name = response[1];
+          //var name = response[0];
+          var descrStr = response[2];
+          //var urlStr = response[3];
+          var url = 'http://en.wikipedia.org/wiki/' + name;
+          var contentString = '<div><h4>' + name + '</h4>' + '<p id = "descr">' + descrStr +
+           '</p><p><b>Learn more about</b>: <a href="' + url + '">' + name + '</a></p></div>';
+
+          infowindow.setContent(contentString);
+          infowindow.open(map,clickedMarker);
+          toggleBounce();
+          //added after my review
+          clearTimeout(wikiRequestTimeout);
+        });
     }
+
    //Event listeners, when marker is clicked request data from wiki to
    //build infowindow content string
     google.maps.event.addListener(marker, 'click', function() {
