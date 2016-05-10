@@ -17,13 +17,14 @@ html, body {
 }
 
 #map {
-    height: 100vh;
+    height: 80vh;
     max-width: 100%;
 }
 
 #searchbox {
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 2px;
 }
 
 #my-list {
@@ -40,6 +41,23 @@ html, body {
     padding-right: 7px;
     font-size: 1.1em
 }
+
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
     background-color: #F57F05;
+}
+
+.back-to-top {
+    display: block;
+    text-decoration: none;
+    background-color: #F57F05;
+    padding: 4px 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+    float: right;
+    z-index: 99;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
 }
