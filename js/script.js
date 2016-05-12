@@ -61,8 +61,6 @@ function initMap() {
         contentString = '<p>"Failed to get wikipedia resources."<p>';
         //alert(contentString);
         infowindow.setContent(contentString);
-        infowindow.open(map,clickedMarker);
-        toggleBounce();
       }, 5000);
 
       //replased success method with done as the first is deprecated.
@@ -80,10 +78,7 @@ function initMap() {
           var url = 'http://en.wikipedia.org/wiki/' + name;
           var contentString = '<div><h4>' + name + '</h4>' + '<p id = "descr">' + descrStr +
            '</p><p><b>Learn more about</b>: <a href="' + url + '">' + name + '</a></p></div>';
-
           infowindow.setContent(contentString);
-          infowindow.open(map,clickedMarker);
-          toggleBounce();
           //added after my review
           clearTimeout(wikiRequestTimeout);
         });
@@ -92,9 +87,11 @@ function initMap() {
    //Event listeners, when marker is clicked request data from wiki to
    //build infowindow content string
     google.maps.event.addListener(marker, 'click', function() {
-    loadWiki(this);
-    map.panTo(marker.position);
-    //map.setZoom(16);
+      loadWiki(this);
+      infowindow.open(map,this);
+      toggleBounce();
+      map.panTo(marker.position);
+      //map.setZoom(16);
     });
   }
 
