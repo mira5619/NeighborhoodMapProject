@@ -59,6 +59,10 @@ function initMap() {
       //after me review added setTimeout function for error handling with JSON P
       var wikiRequestTimeout = setTimeout(function(){
         contentString = '<p>"Failed to get wikipedia resources."<p>';
+        //alert(contentString);
+        infowindow.setContent(contentString);
+        infowindow.open(map,clickedMarker);
+        toggleBounce();
       }, 5000);
 
       //replased success method with done as the first is deprecated.
