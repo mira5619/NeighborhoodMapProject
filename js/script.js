@@ -58,9 +58,9 @@ function initMap() {
        mylist[i].name + '&' + mylist[i].address + '&format=json&callback=wikiCallback';
       //after me review added setTimeout function for error handling with JSON P
       var wikiRequestTimeout = setTimeout(function(){
-        contentString = '<p>"Failed to get wikipedia resources."<p>';
+        var errorString = '<p>"Failed to load wikipedia resources, please try again later."<p>';
         //alert(contentString);
-        infowindow.setContent(contentString);
+        infowindow.setContent(errorString);
       }, 5000);
 
       //replased success method with done as the first is deprecated.
