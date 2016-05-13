@@ -22,8 +22,8 @@ function initMap() {
   infowindow = new google.maps.InfoWindow({
     maxWidth: 200
   });
+
   //for each place in data array create marker
-  //var i;
   for (var i = 0; i < mylist.length; i++) {
     createMarker(i);
   }
@@ -58,7 +58,7 @@ function initMap() {
        mylist[i].name + '&' + mylist[i].address + '&format=json&callback=wikiCallback';
       //after me review added setTimeout function for error handling with JSON P
       var wikiRequestTimeout = setTimeout(function(){
-        var errorString = '<p>"Failed to load wikipedia resources, please try again later."<p>';
+        var errorString = '<p>"Failed to get wikipedia resources."<p>';
         //alert(contentString);
         infowindow.setContent(errorString);
       }, 5000);
@@ -72,12 +72,10 @@ function initMap() {
         jsonp: "callback"
       }).done(function( response ) {
           var name = response[1];
-          //var name = response[0];
           var descrStr = response[2];
-          //var urlStr = response[3];
           var url = 'http://en.wikipedia.org/wiki/' + name;
           var contentString = '<div><h4>' + name + '</h4>' + '<p id = "descr">' + descrStr +
-           '</p><p><b>Learn more about</b>: <a href="' + url + '">' + name + '</a></p></div>';
+           '</p><p><b>Learn more about</b>: <a href="' + url + '">' + name + '</a> on Wikipedia.</p></div>';
           infowindow.setContent(contentString);
           //added after my review
           clearTimeout(wikiRequestTimeout);
@@ -89,6 +87,7 @@ function initMap() {
     google.maps.event.addListener(marker, 'click', function() {
       loadWiki(this);
       infowindow.open(map,this);
+      //infowindow.setZIndex(99);
       toggleBounce();
       map.panTo(marker.position);
       //map.setZoom(16);
@@ -97,13 +96,24 @@ function initMap() {
 
  //thanks to Ashley Davison, https://github.com/AshleyED/NeighborhoodMap
  //event listener, map resize and remain centered in response to a window resize
-  google.maps.event.addDomListener(window, "resize", function() {
+  /*google.maps.event.addDomListener(window, "resize", function() {
     var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
-  });
+  });*/
   ko.applyBindings(new ViewModel());
 } //end of initMap
+
+//reset map
+  function resetMap() {
+    map.setZoom(12);
+    map.setCenter({lat: 50.7781, lng: -1.0833});
+    }
+
+  $(".reset").click(function() {
+    resetMap();
+  });
+
 
 //error message if Google Maps API call fails.
 function googleError() {
@@ -136,7 +146,6 @@ var ViewModel = function() {
   this.setLoc = function(clickedLoc) {
     self.currentLoc(clickedLoc);
     google.maps.event.trigger(clickedLoc.marker, 'click');
-    //google.maps.event.trigger(this.marker, 'click');
   };
 
   //store and observe the user input string
@@ -156,4 +165,3 @@ var ViewModel = function() {
     });
   });
 }; //end of viewModel
-
