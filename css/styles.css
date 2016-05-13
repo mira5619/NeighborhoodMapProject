@@ -4,16 +4,8 @@ html, body {
     padding: 0;
 }
 
-.heading {
-    padding-top: 20px;
-}
-
-#btn {
-    font-size:1.2em;
-}
-
-#descr {
-    font-size:1.1em;
+#map-container{
+    height:100%;
 }
 
 #map {
@@ -21,10 +13,44 @@ html, body {
     max-width: 100%;
 }
 
-#searchbox {
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #F57F05;
+}
+
+.reset-top {
+   margin-top: 10px;
+   margin-bottom: 5px;
+}
+
+.reset-top, .reset-bottom {
+    height: 43px;
+    margin-right: 2px;
+    float: right;
+    background-color: #F57F05;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+.reset:focus {
+    outline: none;
+}
+
+input#searchbox {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 2px;
+}
+
+.back-to-top {
+    height: 43px;
+    width: 60px;
+    text-decoration: none;
+    background-color: #F57F05;
+    font-weight: 500;
+    color: #333;
+    float: right;
 }
 
 #my-list {
@@ -42,22 +68,51 @@ html, body {
     font-size: 1.1em
 }
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: #F57F05;
-}
+@media screen and (max-width: 420px) {
 
-.back-to-top {
-    display: block;
-    text-decoration: none;
-    background-color: #F57F05;
+  input#searchbox {
+    width: 60px;
+  }
+
+  .reset-top {
+    margin-right: 15px;
+  }
+
+  .reset-top, .reset-bottom, .back-to-top {
+    width: 60px;
+  }
+
+  .back-to-top {
     padding: 4px 10px;
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #333;
-    float: right;
-    z-index: 99;
+    color: #333
+
+  }
 }
 
-a:focus, a:hover {
-    text-decoration: none;
+@media screen and (min-width:421px) {
+
+  input#searchbox {
+    width: 100px;
+  }
+
+  .reset-top {
+    width:100px;
+    margin-right: 15px;
+  }
+
+  .reset-bottom{
+    margin-top:0;
+    padding: 0;
+    width: 100px;
+  }
+
+  .back-to-top {
+    width: 100px;
+    padding: 10px 10px;
+  }
+
+  .heading {
+    font-size:1.7em;
+  }
+
 }
