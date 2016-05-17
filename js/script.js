@@ -121,11 +121,11 @@ function googleError() {
 }
 
 var Loc = function(data) {
-  this.name = ko.observable(data.name);
-  this.address = ko.observable(data.address);
-  this.descrString = ko.observable(data.descrString);
-  this.lat = ko.observable(data.lat);
-  this.lng = ko.observable(data.lng);
+  this.name = data.name;
+  this.address = data.address;
+  this.descrString = data.descrString;
+  this.lat = data.lat;
+  this.lng = data.lng;
   this.marker = '';
 };
 
