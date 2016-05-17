@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -13,7 +14,8 @@ html, body {
     max-width: 100%;
 }
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
     background-color: #F57F05;
 }
 
@@ -22,14 +24,16 @@ html, body {
    margin-bottom: 5px;
 }
 
-.reset-top, .reset-bottom {
+.reset-top,
+.reset-bottom {
     height: 43px;
     margin-right: 2px;
     float: right;
     background-color: #F57F05;
 }
 
-a:focus, a:hover {
+a:focus,
+a:hover {
     text-decoration: none;
 }
 
@@ -78,7 +82,9 @@ input#searchbox {
     margin-right: 15px;
   }
 
-  .reset-top, .reset-bottom, .back-to-top {
+  .reset-top,
+  .reset-bottom,
+  .back-to-top {
     width: 60px;
   }
 
